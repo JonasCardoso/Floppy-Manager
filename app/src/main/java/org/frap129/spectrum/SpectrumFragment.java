@@ -265,7 +265,7 @@ public class SpectrumFragment extends RecyclerViewFragment {
 
         final DescriptionView desc9 = new DescriptionView();
         desc9.setSummary(getString(R.string.spec_none_summary));
-        desc9.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_spectrum_balanced));
+        desc9.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_spectrum_logo));
 
         card9.setOnItemClickListener(new CardView.OnItemClickListener() {
             @Override
