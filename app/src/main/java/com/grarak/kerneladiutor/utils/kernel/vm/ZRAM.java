@@ -25,6 +25,9 @@ import com.grarak.kerneladiutor.fragments.ApplyOnBootFragment;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.root.Control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by willi on 03.08.16.
  */
@@ -35,7 +38,8 @@ public class ZRAM {
     private static final String DISKSIZE = "/sys/block/zram0/disksize";
     private static final String RESET = "/sys/block/zram0/reset";
     private static final String MAX_COMP_STREAMS = "/sys/block/zram0/max_comp_streams";
-
+    private static final String COMP_ALGO = "/sys/block/zram0/comp_algorithm";
+	
     public static void setDisksize(final long value, final Context context) {
         String maxCompStrems = null;
         if (Utils.existFile(MAX_COMP_STREAMS)) {
@@ -67,6 +71,41 @@ public class ZRAM {
         return Utils.existFile(ZRAM);
     }
 
+    public static void setgetCompAlgo(String value, Context context) {
+        run(Control.write(value, COMP_ALGO), COMP_ALGO, context);
+    }
+
+    public static String getCompAlgo() {
+        return getCompAlgo(COMP_ALGO);
+    }
+
+    public static List<String> getCompAlgos() {
+        return getCompAlgos(COMP_ALGO);
+    }
+
+    public static boolean hasCompAlgo() {
+        return Utils.existFile(COMP_ALGO);
+    }
+
+    private static String getCompAlgo(String path) {
+        String[] algos = Utils.readFile(path).split(" ");
+        for (String algo : algos) {
+            if (algo.startsWith("[") && algo.endsWith("]")) {
+                return algo.replace("[", "").replace("]", "");
+            }
+        }
+        return "";
+    }
+
+    private static List<String> getCompAlgos(String path) {
+        String[] algos = Utils.readFile(path).split(" ");
+        List<String> list = new ArrayList<>();
+        for (String algo : algos) {
+            list.add(algo.replace("[", "").replace("]", ""));
+        }
+        return list;
+    }
+	
     private static void run(String command, String id, Context context) {
         Control.runSetting(command, ApplyOnBootFragment.VM, id, context);
     }
