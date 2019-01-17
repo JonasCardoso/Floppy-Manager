@@ -732,6 +732,8 @@
     <!-- Virtual Memory -->
     <string name="swap">SWAP</string>
     <string name="zram">Z-RAM</string>
+    <string name="zram_algo">Z-RAM Algorithm</string>
+    <string name="zram_algo_summary">Set default Z-RAM Compression algorithm.\nReduce Z-RAM Disksize to \'0\' before changing this option.</string>
     <string name="disksize">Disksize</string>
     <string name="disksize_summary">Attempts to increase performance by avoiding paging on physical storage, instead using a compressed virtual device in RAM. Paging takes place in RAM until it is necessary to use the swap space on physical storage.</string>
     <string name="zswap">ZSWAP</string>
@@ -740,8 +742,6 @@
     <string name="memory_pool_summary">Memory pool percentage of main memory that may be used as compressed page cache.</string>
     <string name="maximum_compression_ratio">Maximum compression ratio</string>
     <string name="maximum_compression_ratio_summary">Maximum compression ratio, as percentage, for an acceptable compressed page. Any page that does not compress by at least this ratio will be rejected.</string>
-    <string name="comp_algo">Compression Mode</string>
-    <string name="comp_algo_summary">Set default ZRAM Compression algorithm</string>
 	
     <!-- Entropy -->
     <string name="available">Available</string>
@@ -751,6 +751,9 @@
 
     <!-- Misc -->
     <string name="android_logger">Android logging</string>
+    <string name="android_logger_summary">Turn On/Off Android logging</string>
+    <string name="printk_logger">PrintK logging</string>
+    <string name="printk_logger_summary">Turn On/Off Linux PrintK logging</string>
     <string name="selinux_switch">SELinux Switch</string>
     <string name="selinux_switch_summary">Disable to switch SELinux into Permissive</string>
     <string name="crc">Software CRC control</string>

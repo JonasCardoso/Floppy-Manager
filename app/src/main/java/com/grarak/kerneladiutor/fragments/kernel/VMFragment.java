@@ -32,9 +32,8 @@ import com.grarak.kerneladiutor.views.recyclerview.CardView;
 import com.grarak.kerneladiutor.views.recyclerview.GenericSelectView;
 import com.grarak.kerneladiutor.views.recyclerview.RecyclerViewItem;
 import com.grarak.kerneladiutor.views.recyclerview.SeekBarView;
-import com.grarak.kerneladiutor.views.recyclerview.SwitchView;
 import com.grarak.kerneladiutor.views.recyclerview.SelectView;
-import com.grarak.kerneladiutor.views.recyclerview.TitleView;
+import com.grarak.kerneladiutor.views.recyclerview.SwitchView;
 
 import com.smartpack.kernelmanager.utils.ProgressBarView;
 
@@ -158,21 +157,22 @@ public class VMFragment extends RecyclerViewFragment {
         });
 
         zRAM.addItem(zram);
-		
-        if (ZRAM.hasCompAlgo()) {
-            SelectView algo = new SelectView();
-            algo.setTitle(getString(R.string.comp_algo));
-            algo.setSummary(getString(R.string.comp_algo_summary));
-            algo.setItems(ZRAM.getCompAlgos());
-            algo.setItem(ZRAM.getCompAlgo());
-            algo.setOnItemSelected(new SelectView.OnItemSelected() {
+
+        if (ZRAM.hasZRAMAlgo()) {
+            SelectView zramAlgo = new SelectView();
+            zramAlgo.setTitle(getString(R.string.zram_algo));
+            zramAlgo.setSummary(getString(R.string.zram_algo_summary));
+            zramAlgo.setItems(ZRAM.getAvailableZRAMAlgos());
+            zramAlgo.setItem(ZRAM.getZRAMAlgo());
+            zramAlgo.setOnItemSelected(new SelectView.OnItemSelected() {
                 @Override
                 public void onItemSelected(SelectView selectView, int position, String item) {
-                    ZRAM.setgetCompAlgo(item, getActivity());
+                    ZRAM.setZRAMAlgo(item, getActivity());
                 }
             });
-            zRAM.addItem(algo);
-        }
+
+            zRAM.addItem(zramAlgo);
+	}
 
         if (zRAM.size() > 0) {
             items.add(zRAM);
