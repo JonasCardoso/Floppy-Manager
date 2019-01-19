@@ -118,6 +118,16 @@ public class SoundFragment extends RecyclerViewFragment {
             SoundControlCard.addItem(highPerfMode);
         }
 
+        if (mSound.hasHighPerfAudioEnable()) {		
+            SwitchView highPerfAudio = new SwitchView();
+            highPerfAudio.setSummary(getString(R.string.headset_highperf_mode));
+            highPerfAudio.setChecked(mSound.isHighPerfAudioEnabled());
+            highPerfAudio.addOnSwitchListener((switchView, isChecked)
+                -> mSound.enableHighPerfAudio(isChecked, getActivity()));
+
+            SoundControlCard.addItem(highPerfAudio);  
+        }
+		
 	if (mSound.haswcdspeakerleakage()) {
             SwitchView wcdspeakerleakage = new SwitchView();
             wcdspeakerleakage.setTitle(getString(R.string.speaker_leakage));

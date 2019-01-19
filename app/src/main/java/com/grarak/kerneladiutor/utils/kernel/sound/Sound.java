@@ -51,6 +51,7 @@ public class Sound {
 
     private static final String SOUNDCONTROL = "/sys/devices/virtual/misc/soundcontrol";
     private static final String HIGHPERF_MODE_ENABLE = SOUNDCONTROL + "/highperf_enabled";
+    private static final String HIGHPERF_AUDIO_ENABLE = "/sys/module/snd_soc_wcd9330/parameters/high_perf_mode";
     private static final String SPEAKER_BOOST = SOUNDCONTROL + "/speaker_boost";
     private static final String MIC_BOOST = SOUNDCONTROL + "/mic_boost";
     private static final String VOLUME_BOOST = SOUNDCONTROL + "/volume_boost";
@@ -292,6 +293,18 @@ public class Sound {
         return Utils.existFile(HIGHPERF_MODE_ENABLE);
     }
 
+    public void enableHighPerfAudio(boolean enable, Context context) {
+        run(Control.write(enable ? "1" : "0", HIGHPERF_AUDIO_ENABLE), HIGHPERF_AUDIO_ENABLE, context);
+    }
+
+    public boolean isHighPerfAudioEnabled() {
+        return Utils.readFile(HIGHPERF_AUDIO_ENABLE).equals("1");
+    }
+
+    public boolean hasHighPerfAudioEnable() {
+        return Utils.existFile(HIGHPERF_AUDIO_ENABLE);
+    }
+	
     public void enableSoundControl(boolean enable, Context context) {
         run(Control.write(enable ? "Y" : "N", SOUND_CONTROL_ENABLE), SOUND_CONTROL_ENABLE, context);
     }
