@@ -52,6 +52,7 @@ import com.grarak.kerneladiutor.utils.kernel.screen.Screen;
 import com.grarak.kerneladiutor.utils.kernel.sound.Sound;
 import com.grarak.kerneladiutor.utils.kernel.thermal.Thermal;
 import com.grarak.kerneladiutor.utils.kernel.wake.Wake;
+import com.smartpack.kernelmanager.utils.Wakelocks;
 import com.grarak.kerneladiutor.utils.root.RootUtils;
 
 import org.frap129.spectrum.Spectrum;
@@ -74,6 +75,12 @@ public class MainActivity extends BaseActivity {
         /**
          * Initialice profile Sharedpreference
          */
+		 
+        //Initialize Boeffla Wakelock Blocker Files
+        if(Wakelocks.supported()) {
+            Wakelocks.CopyWakelockBlockerDefault();
+        }
+		
         int prof = Utils.strToInt(Spectrum.getProfile());
         Prefs.saveInt("spectrum_profile", prof, this);
 
