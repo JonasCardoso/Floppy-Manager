@@ -307,7 +307,7 @@ public class MiscFragment extends RecyclerViewFragment {
 		if (mMisc.hasUCBalanced()) {
 			SwitchView ucBalanced = new SwitchView();
 			ucBalanced.setTitle(getString(R.string.underclock_balanced));
-			ucBalanced.setSummary(getString(R.string.underclock_balanced_sumary));
+			ucBalanced.setSummary(getString(R.string.underclock_balanced_summary));
 			ucBalanced.setChecked(mMisc.isUCBalancedEnabled());
 			ucBalanced.addOnSwitchListener(new SwitchView.OnSwitchListener() {
 				@Override
@@ -322,7 +322,7 @@ public class MiscFragment extends RecyclerViewFragment {
 		if (mMisc.hasUCBattery()) {
 			SwitchView ucBattery = new SwitchView();
 			ucBattery.setTitle(getString(R.string.underclock_battery));
-			ucBattery.setSummary(getString(R.string.underclock_battery_sumary));
+			ucBattery.setSummary(getString(R.string.underclock_battery_summary));
 			ucBattery.setChecked(mMisc.isUCBatteryEnabled());
 			ucBattery.addOnSwitchListener(new SwitchView.OnSwitchListener() {
 				@Override

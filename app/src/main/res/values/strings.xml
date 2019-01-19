@@ -777,9 +777,9 @@
     <string name="network">Network</string>
 	<string name="underclock">Underclock</string>
 	<string name="underclock_balanced">Underclock Balanced</string>
-	<string name="underclock_balanced_sumary">Xiaomi Mi5 (B:1824MHz  and L:1324MHz).\nXiaomi Mi5S (B:1824MHz and L:1593MHz). \nXiaomi Mi Note 2 - Xiaomi Mi Mix - Xiaomi Mi5s Plus (B:2054MHz and L:1728MHz).</string>	
+	<string name="underclock_balanced_summary">Xiaomi Mi5 (B:1824MHz  and L:1324MHz).\nXiaomi Mi5S (B:1824MHz and L:1593MHz). \nXiaomi Mi Note 2 - Xiaomi Mi Mix - Xiaomi Mi5s Plus (B:2054MHz and L:1728MHz).</string>	
 	<string name="underclock_battery">Underclock Battery</string>
-	<string name="underclock_battery_sumary">Xiaomi Mi5 (B:1708MHz  and L:1228MHz).\nXiaomi Mi5S (B:1670MHz and L:1440MHz). \nXiaomi Mi Note 2 - Xiaomi Mi Mix - Xiaomi Mi5s Plus (B:1824MHz and L:1593MHz).</string>
+	<string name="underclock_battery_summary">Xiaomi Mi5 (B:1708MHz  and L:1228MHz).\nXiaomi Mi5S (B:1670MHz and L:1440MHz). \nXiaomi Mi Note 2 - Xiaomi Mi Mix - Xiaomi Mi5s Plus (B:1824MHz and L:1593MHz).</string>
     <string name="tcp">TCP Congestion Algorithm</string>
     <string name="tcp_summary">The Transmission Control Protocol is one of the core protocols of the Internet protocol suite (IP), and is so common that the entire suite is often called TCP/IP.</string>
     <string name="hostname">Hostname</string>
