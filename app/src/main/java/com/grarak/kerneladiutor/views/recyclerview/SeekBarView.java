@@ -208,7 +208,7 @@ public class SeekBarView extends RecyclerViewItem {
                 try {
                     String text = mItems.get(mProgress);
                     mSeekBar.setProgress(mProgress);
-                    if (mUnit != null) text += mUnit;
+                    if (mUnit != null) text = mUnit;
                     mValue.setText(text);
                 } catch (Exception ignored) {
                     mValue.setText(mValue.getResources().getString(R.string.not_in_range));

@@ -55,6 +55,13 @@ public class Misc {
     private static final String TCP_AVAILABLE_CONGESTIONS = "/proc/sys/net/ipv4/tcp_available_congestion_control";
     private static final String WIREGUARD = "/sys/module/wireguard/version";
 
+    private static final String BACKGROUND = "/dev/cpuset/background/cpus";
+    private static final String CAMERA_DAEMON = "/dev/cpuset/camera-daemon/cpus";	
+    private static final String FOREGROUND = "/dev/cpuset/foreground/cpus";
+    private static final String RESTRICTED = "/dev/cpuset/restricted/cpus";
+    private static final String SYSTEM_BACKGROUND = "/dev/cpuset/system-background/cpus";
+    private static final String TOP_APP = "/dev/cpuset/top-app/cpus";
+
     private static final String PRINTK_MODE = "/sys/kernel/printk_mode/printk_mode";
 
     private static final String HOSTNAME_KEY = "net.hostname";
@@ -158,6 +165,78 @@ public class Misc {
 
     public boolean hasFPBoost() {
         return Utils.existFile(FP_BOOST);
+    }
+	
+    public void setBackground(String value, Context context) {
+        run(Control.write(String.valueOf(value), BACKGROUND), BACKGROUND, context);
+    }
+
+    public static String getBackground() {
+        return Utils.readFile(BACKGROUND);
+    }
+
+    public static boolean hasBackground() {
+        return Utils.existFile(BACKGROUND);
+    }	
+
+    public void setCameraDaemon(String value, Context context) {
+        run(Control.write(String.valueOf(value), CAMERA_DAEMON), CAMERA_DAEMON, context);
+    }
+
+    public static String getCameraDaemon() {
+        return Utils.readFile(CAMERA_DAEMON);
+    }
+
+    public static boolean hasCameraDaemon() {
+        return Utils.existFile(CAMERA_DAEMON);
+    }
+	
+    public void setForeground(String value, Context context) {
+        run(Control.write(String.valueOf(value), FOREGROUND), FOREGROUND, context);
+    }
+
+    public static String getForeground() {
+        return Utils.readFile(FOREGROUND);
+    }
+
+    public static boolean hasForeground() {
+        return Utils.existFile(FOREGROUND);
+    }
+	
+    public void setRestricted(String value, Context context) {
+        run(Control.write(String.valueOf(value), RESTRICTED), RESTRICTED, context);
+    }
+
+    public static String getRestricted() {
+        return Utils.readFile(RESTRICTED);
+    }
+
+    public static boolean hasRestricted() {
+        return Utils.existFile(RESTRICTED);
+    }	
+	
+    public void setSystemBackground(String value, Context context) {
+        run(Control.write(String.valueOf(value), SYSTEM_BACKGROUND), SYSTEM_BACKGROUND, context);
+    }
+
+    public static String getSystemBackground() {
+        return Utils.readFile(SYSTEM_BACKGROUND);
+    }
+
+    public static boolean hasSystemBackground() {
+        return Utils.existFile(SYSTEM_BACKGROUND);
+    }	
+	
+    public void setTopApp(String value, Context context) {
+        run(Control.write(String.valueOf(value), TOP_APP), TOP_APP, context);
+    }
+
+    public static String getTopApp() {
+        return Utils.readFile(TOP_APP);
+    }
+
+    public static boolean hasTopApp() {
+        return Utils.existFile(TOP_APP);
     }
 
 	public void enableUCBalanced(boolean enable, Context context) {

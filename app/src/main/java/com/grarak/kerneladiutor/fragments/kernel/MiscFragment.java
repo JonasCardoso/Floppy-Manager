@@ -88,6 +88,7 @@ public class MiscFragment extends RecyclerViewFragment {
 		if (mMisc.hasUCBalanced() || mMisc.hasUCBattery()) {
 			underclockInit(items);
 		}
+        cpusetInit(items);
         networkInit(items);
     }
 
@@ -300,6 +301,332 @@ public class MiscFragment extends RecyclerViewFragment {
         }
     }
 
+    private void cpusetInit(List<RecyclerViewItem> items) {
+        CardView cpusetCard = new CardView(getActivity());
+        cpusetCard.setTitle(getString(R.string.cpuset));
+		
+	    if (mMisc.hasBackground()) {
+            SeekBarView background = new SeekBarView();
+            background.setTitle(getString(R.string.background));
+            background.setSummary(getString(R.string.background_summary));
+	        background.setMax(3);
+	        background.setMin(0);		
+	        background.setOffset(1);
+			int tmp;
+			if("0-1".endsWith(mMisc.getBackground())){
+				tmp = 1;
+				background.setUnit("0-" + tmp);
+			}
+			else if("0-2".endsWith(mMisc.getBackground())){
+				tmp = 2;
+				background.setUnit("0-" + tmp);
+			}
+			else if("0-3".endsWith(mMisc.getBackground())){
+				tmp = 3;
+				background.setUnit("0-" + tmp);				
+			}
+			else{
+				tmp = 0;
+				background.setUnit("0");				
+			}
+	        background.setProgress(tmp);
+	        background.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
+		        @Override
+		        public void onStop(SeekBarView seekBarView, int position, String value) {	
+				String txt = String.valueOf(position);
+					if (position == 0){
+			            mMisc.setBackground((txt), getActivity());	
+	                    background.setUnit("0");	
+					}
+					else{
+			            mMisc.setBackground(("0-" + txt), getActivity());		
+	                    background.setUnit("0-" + txt);				
+					}					
+		        }			
+		        @Override
+		        public void onMove(SeekBarView seekBarView, int position, String value) {
+				String txt = String.valueOf(position);
+					if (position == 0){	
+	                    background.setUnit("0");	
+					}
+					else{		
+	                    background.setUnit("0-" + txt);				
+					}
+		        }
+	        	});
+
+            cpusetCard.addItem(background);
+	    }
+		
+	    if (mMisc.hasCameraDaemon()) {
+            SeekBarView cameradaemon = new SeekBarView();
+            cameradaemon.setTitle(getString(R.string.camera_daemon));
+            cameradaemon.setSummary(getString(R.string.camera_daemon_summary));
+	        cameradaemon.setMax(3);
+	        cameradaemon.setMin(0);		
+	        cameradaemon.setOffset(1);
+			int tmp;
+			if("0-1".endsWith(mMisc.getCameraDaemon())){
+				tmp = 1;
+				cameradaemon.setUnit("0-" + tmp);
+			}
+			else if("0-2".endsWith(mMisc.getCameraDaemon())){
+				tmp = 2;
+				cameradaemon.setUnit("0-" + tmp);
+			}
+			else if("0-3".endsWith(mMisc.getCameraDaemon())){
+				tmp = 3;
+				cameradaemon.setUnit("0-" + tmp);				
+			}
+			else{
+				tmp = 0;
+				cameradaemon.setUnit("0");				
+			}
+	        cameradaemon.setProgress(tmp);
+	        cameradaemon.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
+		        @Override
+		        public void onStop(SeekBarView seekBarView, int position, String value) {	
+				String txt = String.valueOf(position);
+					if (position == 0){
+			            mMisc.setCameraDaemon((txt), getActivity());
+	                    cameradaemon.setUnit("0");						
+					}
+					else{
+			            mMisc.setCameraDaemon(("0-" + txt), getActivity());
+	                    cameradaemon.setUnit("0-" + txt);	
+					}					
+		        }			
+		        @Override
+		        public void onMove(SeekBarView seekBarView, int position, String value) {
+				String txt = String.valueOf(position);
+					if (position == 0){	
+	                    cameradaemon.setUnit("0");	
+					}
+					else{		
+	                    cameradaemon.setUnit("0-" + txt);				
+					}
+		        }
+	        	});
+
+            cpusetCard.addItem(cameradaemon);
+	    }
+		
+	    if (mMisc.hasForeground()) {
+            SeekBarView foreground = new SeekBarView();
+            foreground.setTitle(getString(R.string.foreground));
+            foreground.setSummary(getString(R.string.foreground_summary));
+	        foreground.setMax(3);
+	        foreground.setMin(0);		
+	        foreground.setOffset(1);
+			int tmp;
+			if("0-1".endsWith(mMisc.getForeground())){
+				tmp = 1;
+				foreground.setUnit("0-" + tmp);
+			}
+			else if("0-2".endsWith(mMisc.getForeground())){
+				tmp = 2;
+				foreground.setUnit("0-" + tmp);
+			}
+			else if("0-3".endsWith(mMisc.getForeground())){
+				tmp = 3;
+				foreground.setUnit("0-" + tmp);				
+			}
+			else{
+				tmp = 0;
+				foreground.setUnit("0-" + tmp);				
+			}
+	        foreground.setProgress(tmp);
+	        foreground.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
+		        @Override
+		        public void onStop(SeekBarView seekBarView, int position, String value) {	
+				String txt = String.valueOf(position);
+					if (position == 0){
+			            mMisc.setForeground((txt), getActivity());
+	                    foreground.setUnit("0");						
+					}
+					else{
+			            mMisc.setForeground(("0-" + txt), getActivity());
+	                    foreground.setUnit("0-" + txt);	
+					}					
+		        }			
+		        @Override
+		        public void onMove(SeekBarView seekBarView, int position, String value) {
+				String txt = String.valueOf(position);
+					if (position == 0){	
+	                    foreground.setUnit("0");	
+					}
+					else{		
+	                    foreground.setUnit("0-" + txt);				
+					}
+		        }
+	        	});
+
+            cpusetCard.addItem(foreground);
+	    }
+		
+	    if (mMisc.hasRestricted()) {
+            SeekBarView restricted = new SeekBarView();
+            restricted.setTitle(getString(R.string.restricted));
+            restricted.setSummary(getString(R.string.restricted_summary));
+	        restricted.setMax(3);
+	        restricted.setMin(0);		
+	        restricted.setOffset(1);
+			int tmp;
+			if("0-1".endsWith(mMisc.getRestricted())){
+				tmp = 1;
+				restricted.setUnit("0-" + tmp);
+			}
+			else if("0-2".endsWith(mMisc.getRestricted())){
+				tmp = 2;
+				restricted.setUnit("0-" + tmp);
+			}
+			else if("0-3".endsWith(mMisc.getRestricted())){
+				tmp = 3;
+				restricted.setUnit("0-" + tmp);				
+			}
+			else{
+				tmp = 0;	
+				restricted.setUnit("0-" + tmp);				
+			}
+	        restricted.setProgress(tmp);
+	        restricted.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
+		        @Override
+		        public void onStop(SeekBarView seekBarView, int position, String value) {	
+				String txt = String.valueOf(position);
+					if (position == 0){
+			            mMisc.setRestricted((txt), getActivity());	
+	                    restricted.setUnit("0");						
+					}
+					else{
+			            mMisc.setRestricted(("0-" + txt), getActivity());
+	                    restricted.setUnit("0-" + txt);	
+					}					
+		        }			
+		        @Override
+		        public void onMove(SeekBarView seekBarView, int position, String value) {
+				String txt = String.valueOf(position);
+					if (position == 0){	
+	                    restricted.setUnit("0");	
+					}
+					else{		
+	                    restricted.setUnit("0-" + txt);				
+					}
+		        }
+	        	});
+
+            cpusetCard.addItem(restricted);
+	    }
+		
+	    if (mMisc.hasSystemBackground()) {
+            SeekBarView systembackground = new SeekBarView();
+            systembackground.setTitle(getString(R.string.system_background));
+            systembackground.setSummary(getString(R.string.system_background_summary));
+	        systembackground.setMax(3);
+	        systembackground.setMin(0);		
+	        systembackground.setOffset(1);
+			int tmp;
+			if("0-1".endsWith(mMisc.getSystemBackground())){
+				tmp = 1;
+				systembackground.setUnit("0-" + tmp);
+			}
+			else if("0-2".endsWith(mMisc.getSystemBackground())){
+				tmp = 2;
+				systembackground.setUnit("0-" + tmp);
+			}
+			else if("0-3".endsWith(mMisc.getSystemBackground())){
+				tmp = 3;
+				systembackground.setUnit("0-" + tmp);				
+			}
+			else{
+				tmp = 0;
+				systembackground.setUnit("0-" + tmp);				
+			}
+	        systembackground.setProgress(tmp);
+	        systembackground.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
+		        @Override
+		        public void onStop(SeekBarView seekBarView, int position, String value) {	
+				String txt = String.valueOf(position);
+					if (position == 0){
+			            mMisc.setSystemBackground((txt), getActivity());
+	                    systembackground.setUnit("0");						
+					}
+					else{
+			            mMisc.setSystemBackground(("0-" + txt), getActivity());
+	                    systembackground.setUnit("0-" + txt);	
+					}					
+		        }			
+		        @Override
+		        public void onMove(SeekBarView seekBarView, int position, String value) {
+				String txt = String.valueOf(position);
+					if (position == 0){	
+	                    systembackground.setUnit("0");	
+					}
+					else{		
+	                    systembackground.setUnit("0-" + txt);				
+					}
+		        }
+	        	});
+
+            cpusetCard.addItem(systembackground);
+	    }
+		
+	    if (mMisc.hasTopApp()) {
+            SeekBarView topapp = new SeekBarView();
+            topapp.setTitle(getString(R.string.top_app));
+            topapp.setSummary(getString(R.string.top_app_summary));
+	        topapp.setMax(3);
+	        topapp.setMin(0);		
+	        topapp.setOffset(1);
+			int tmp;
+			if("0-1".endsWith(mMisc.getTopApp())){
+				tmp = 1;
+				topapp.setUnit("0-" + tmp);
+			}
+			else if("0-2".endsWith(mMisc.getTopApp())){
+				tmp = 2;
+				topapp.setUnit("0-" + tmp);
+			}
+			else if("0-3".endsWith(mMisc.getTopApp())){
+				tmp = 3;
+				topapp.setUnit("0-" + tmp);				
+			}
+			else{
+				tmp = 0;
+				topapp.setUnit("0-" + tmp);				
+			}
+	        topapp.setProgress(tmp);
+	        topapp.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
+		        @Override
+		        public void onStop(SeekBarView seekBarView, int position, String value) {	
+				String txt = String.valueOf(position);
+					if (position == 0){
+			            mMisc.setTopApp((txt), getActivity());		
+	                    topapp.setUnit("0");						
+					}
+					else{
+			            mMisc.setTopApp(("0-" + txt), getActivity());
+	                    topapp.setUnit("0-" + txt);	
+					}					
+		        }			
+		        @Override
+		        public void onMove(SeekBarView seekBarView, int position, String value) {
+				String txt = String.valueOf(position);
+					if (position == 0){	
+	                    topapp.setUnit("0");	
+					}
+					else{		
+	                    topapp.setUnit("0-" + txt);				
+					}
+		        }
+	        	});
+
+            cpusetCard.addItem(topapp);
+	    }
+		
+    items.add(cpusetCard);
+	
+    }
+	
     private void underclockInit(List<RecyclerViewItem> items) {
         CardView underclockCard = new CardView(getActivity());
         underclockCard.setTitle(getString(R.string.underclock));
