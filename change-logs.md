@@ -1,5 +1,8 @@
 # Change-logs
 
+## 51-1. January 20, 2019
+Changes: SpectrumFragment: fixed QsTile. MiscFragment: added cpuset control interface. MainActivity: Initialize Boeffla Wakelock Blocker Files. Sound: Add High Performance Audio toggle. 
+
 ## 51. January 17, 2019
 *Release-tag: v6.16*
 Changes: Misc: added an option to disable PrintK logging via printk_mode interface by Lord Boeffla. Battery: added support to Lord Boeffla's USB fast charge. VM: added control over zRAM compression algorithm. Display & LED: Unified minimum backlight control. Misc changes and some internal improvements.
