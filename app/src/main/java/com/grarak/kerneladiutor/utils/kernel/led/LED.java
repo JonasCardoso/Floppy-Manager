@@ -167,27 +167,27 @@ public class LED {
         return Utils.existFile(DISPLAY_BACKLIGHT);
     }
 	
-    public void setbuttonbacklight(int value, Context context) {
+    public void setButtonBacklight(int value, Context context) {
         run(Control.write(String.valueOf(value), BUTTON_BACKLIGHT), BUTTON_BACKLIGHT, context);
     }
 
-    public static int getbuttonbacklight() {
+    public static int getButtonBacklight() {
         return Utils.strToInt(Utils.readFile(BUTTON_BACKLIGHT));
     }
 
-    public static boolean hasbuttonbacklight() {
+    public static boolean hasButtonBacklight() {
         return Utils.existFile(BUTTON_BACKLIGHT);
     }
 	
-	public void setbuttonbacklight1(int value, Context context) {
+	public void setButtonBacklight1(int value, Context context) {
         run(Control.write(String.valueOf(value), BUTTON_BACKLIGHT1), BUTTON_BACKLIGHT1, context);
     }
 
-    public static int getbuttonbacklight1() {
+    public static int getButtonBacklight1() {
         return Utils.strToInt(Utils.readFile(BUTTON_BACKLIGHT1));
     }
 
-    public static boolean hasbuttonbacklight1() {
+    public static boolean hasButtonBacklight1() {
         return Utils.existFile(BUTTON_BACKLIGHT1);
     }	
 
@@ -232,7 +232,7 @@ public class LED {
     }
 
     public boolean supported() {
-        return hasFade() || hasdisplaybacklight() || hasbuttonbacklight() || hasbuttonbacklight1() || hasBacklightMin() || hascharginglight() 
+        return hasFade() || hasdisplaybacklight() || hasButtonBacklight() || hasButtonBacklight1() || hasBacklightMin() || hascharginglight() 
 		|| hasIntensity() || hasSpeed() || Sec.supported() || hasdrmBacklightMin();
     }
 

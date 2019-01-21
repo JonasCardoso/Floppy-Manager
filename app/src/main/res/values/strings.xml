@@ -611,8 +611,7 @@
     <string name="fade_out_summary">Sets the time period of the falling slope.</string>
     <string name="backlight_max">Display Backlight (Max)</string>
     <string name="backlight_min">Display Backlight (Min)</string>
-    <string name="buttonbacklight_max_r">Button Backlight (Max-Right)</string>	
-    <string name="buttonbacklight_max_l">Button Backlight (Max-Left)</string>	
+    <string name="buttonbacklight_max">Button Backlight</string>	
 
     <!-- Button -->
     <string name="button">Button</string>	
