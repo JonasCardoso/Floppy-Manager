@@ -452,7 +452,9 @@
     <string name="screen_limit">Screen On Current Limit</string>
     <string name="screen_limit_summary">Enable Screen On Current Limit</string>
     <string name="stockchargelogic">Set 0 for stock charge logic</string>
-
+    <string name="charging_switch">Charging Switch</string>
+    <string name="charging_switch_summary">Enable/disable charging when phone is connected to the charger.</string>
+	
     <!-- Sound -->
     <string name="sound_control">Sound Control</string>
     <string name="speaker_leakage">Speaker Driver Leakage</string>

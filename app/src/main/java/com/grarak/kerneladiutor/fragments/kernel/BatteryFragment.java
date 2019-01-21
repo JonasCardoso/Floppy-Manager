@@ -72,7 +72,7 @@ public class BatteryFragment extends RecyclerViewFragment {
         if (Battery.haschargingstatus()) {
             items.add(mChargingStatus);
         }
-        if (mBattery.hasbatterychargelimit() || mBattery.hasFastCharge() || mBattery.haschargeLevel() || mBattery.hasBlx()) {
+        if (mBattery.hasbatterychargelimit() || mBattery.hasFastCharge() || mBattery.haschargeLevel() || mBattery.hasBlx() || mBattery.hasChargingSwitch1() || mBattery.hasChargingSwitch2()) {
             acciInit(items);
         }
     }
@@ -161,6 +161,28 @@ public class BatteryFragment extends RecyclerViewFragment {
             }
 	}
 
+    if (mBattery.hasChargingSwitch1()) {		
+        SwitchView chargingswitch = new SwitchView();
+        chargingswitch.setTitle(getString(R.string.charging_switch));
+        chargingswitch.setSummary(getString(R.string.charging_switch_summary));
+        chargingswitch.setChecked(mBattery.isChargingSwitch1Enabled());
+        chargingswitch.addOnSwitchListener(new SwitchView.OnSwitchListener() {
+            @Override
+            public void onChanged(SwitchView switchView, boolean isChecked) {
+				if (isChecked){
+                    mBattery.setChargingSwitch1(1, getActivity());
+                    mBattery.setChargingSwitch2(1, getActivity());
+				}
+				else{
+                    mBattery.setChargingSwitch1(0, getActivity());
+                    mBattery.setChargingSwitch2(0, getActivity());	
+				}						
+            }
+        });
+		
+    acci.addItem(chargingswitch);
+	}
+		
 	if (mBattery.hasFastChargeControlAC()) {
             SelectView ACLevelCard = new SelectView();
             ACLevelCard.setTitle(getString(R.string.charge_level_ac));
@@ -324,6 +346,7 @@ public class BatteryFragment extends RecyclerViewFragment {
 			acci.addItem(blx);
 		
 		}
+
         if (acci.size() > 0) {
             items.add(acci);
         }

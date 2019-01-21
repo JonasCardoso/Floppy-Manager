@@ -49,7 +49,10 @@ public class Battery {
         }
         return sInstance;
     }
-
+	
+    private static final String CHARGING_SWITCH1 = "/sys/devices/soc/qpnp-smbcharger-21/power_supply/battery/charging_enabled";
+    private static final String CHARGING_SWITCH2 = "/sys/devices/soc/qpnp-smbcharger-21/power_supply/battery/battery_charging_enabled";
+	
     private static final String FAST_CHARGE = "/sys/kernel/fast_charge";
     private static final String FORCE_FAST_CHARGE = FAST_CHARGE + "/force_fast_charge";
     private static final String CUSTOM_AC_CHARGE_LEVEL = FAST_CHARGE + "/ac_charge_level";
@@ -161,6 +164,46 @@ public class Battery {
         run(Control.write(String.valueOf(value), FORCE_FAST_CHARGE), FORCE_FAST_CHARGE, context);
     }
 
+    public static boolean hasChargingSwitch1() {
+        return Utils.existFile(CHARGING_SWITCH1);
+    }
+	
+    public void ChargingSwitch1enable(boolean enable, Context context) {
+        run(Control.write(enable ? "1" : "0", CHARGING_SWITCH1), CHARGING_SWITCH1, context);
+    }
+
+    public boolean isChargingSwitch1Enabled() {
+        return Utils.readFile(CHARGING_SWITCH1).equals("1");
+    }
+    
+    public static int getChargingSwitch1() {
+        return Utils.strToInt(Utils.readFile(CHARGING_SWITCH1));
+    }
+    
+    public void setChargingSwitch1(int value, Context context) {
+        run(Control.write(String.valueOf(value), CHARGING_SWITCH1), CHARGING_SWITCH1, context);
+    }
+
+    public static boolean hasChargingSwitch2() {
+        return Utils.existFile(CHARGING_SWITCH2);
+    }
+	
+    public void ChargingSwitch2enable(boolean enable, Context context) {
+        run(Control.write(enable ? "1" : "0", CHARGING_SWITCH2), CHARGING_SWITCH2, context);
+    }
+
+    public boolean isChargingSwitch2Enabled() {
+        return Utils.readFile(CHARGING_SWITCH2).equals("1");
+    }
+    
+    public static int getChargingSwitch2() {
+        return Utils.strToInt(Utils.readFile(CHARGING_SWITCH2));
+    }
+    
+    public void setChargingSwitch2(int value, Context context) {
+        run(Control.write(String.valueOf(value), CHARGING_SWITCH2), CHARGING_SWITCH2, context);
+    }
+	
     public static boolean hasFastChargeControlAC() {
         return Utils.existFile(AC_CHARGE_LEVEL);
     }  
@@ -352,7 +395,7 @@ public class Battery {
 
     public boolean supported() {
         return hasCapacity() || hasFastCharge() || haschargeLevel() || hasUSBFastCharge()
-		|| hasBlx() || hasbatterychargelimit() || haschargingstatus();
+		|| hasBlx() || hasbatterychargelimit() || haschargingstatus() || hasChargingSwitch1() || hasChargingSwitch2();
     }
 
     private void run(String command, String id, Context context) {
