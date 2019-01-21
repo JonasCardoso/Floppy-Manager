@@ -102,7 +102,7 @@ public class MiscFragment extends RecyclerViewFragment {
 
         SeekBarView vibration = new SeekBarView();
         vibration.setTitle(getString(R.string.vibration_strength));
-        vibration.setUnit("%");
+        vibration.setUnit(mVibration.get() + "%");
         vibration.setProgress(Math.round((mVibration.get() - min) / offset));
         vibration.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
             @Override
@@ -116,10 +116,12 @@ public class MiscFragment extends RecyclerViewFragment {
                         }
                     }
                 }, 250);
+                vibration.setUnit((position) + "%");
             }
 
             @Override
             public void onMove(SeekBarView seekBarView, int position, String value) {
+                vibration.setUnit((position) + "%");
             }
         });
 

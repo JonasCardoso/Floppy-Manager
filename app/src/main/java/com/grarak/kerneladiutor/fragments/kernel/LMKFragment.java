@@ -105,7 +105,7 @@ public class LMKFragment extends RecyclerViewFragment {
             if (i == descriptions.length) break;
             SeekBarView minfree = new SeekBarView();
             minfree.setTitle(descriptions[i]);
-            minfree.setUnit(getString(R.string.mb));
+            minfree.setUnit(minfree.getProgress() + getString(R.string.mb));
             minfree.setMax(1024);
             minfree.setProgress(Math.round(Utils.strToInt(minfrees.get(i)) / 256));
 
@@ -121,10 +121,12 @@ public class LMKFragment extends RecyclerViewFragment {
                     values.setLength(values.length() - 1);
                     LMK.setMinFree(values.toString(), getActivity());
                     refreshMinFree();
+                    minfree.setUnit(position + getString(R.string.mb));
                 }
 
                 @Override
                 public void onMove(SeekBarView seekBarView, int position, String value) {
+                    minfree.setUnit(position + getString(R.string.mb));
                 }
             });
 

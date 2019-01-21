@@ -104,7 +104,7 @@ public class KSMFragment extends RecyclerViewFragment {
         if (mKSM.hasSleepMilliseconds()) {
             SeekBarView sleepMilliseconds = new SeekBarView();
             sleepMilliseconds.setTitle(getString(R.string.sleep_milliseconds));
-            sleepMilliseconds.setUnit(getString(R.string.ms));
+            sleepMilliseconds.setUnit(sleepMilliseconds.getProgress() + getString(R.string.ms));
             sleepMilliseconds.setMax(5000);
             sleepMilliseconds.setOffset(50);
             sleepMilliseconds.setProgress(mKSM.getSleepMilliseconds() / 50);
@@ -112,10 +112,12 @@ public class KSMFragment extends RecyclerViewFragment {
                 @Override
                 public void onStop(SeekBarView seekBarView, int position, String value) {
                     mKSM.setSleepMilliseconds(position * 50, getActivity());
+                    sleepMilliseconds.setUnit(position * 50 + getString(R.string.ms));
                 }
 
                 @Override
                 public void onMove(SeekBarView seekBarView, int position, String value) {
+                    sleepMilliseconds.setUnit(position * 50 + getString(R.string.ms));
                 }
             });
 

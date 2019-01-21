@@ -259,7 +259,7 @@ public class BatteryFragment extends RecyclerViewFragment {
         if (mBattery.haschargeLevelAC()) {
             SeekBarView chargeLevelAC = new SeekBarView();
             chargeLevelAC.setTitle(getString(R.string.charge_level_ac));
-            chargeLevelAC.setUnit(getString(R.string.ma));
+            chargeLevelAC.setUnit(mBattery.getchargeLevelAC() + getString(R.string.ma));
             chargeLevelAC.setMax(3000);
             chargeLevelAC.setMin(0);			
             chargeLevelAC.setOffset(25);
@@ -268,10 +268,12 @@ public class BatteryFragment extends RecyclerViewFragment {
                 @Override
                 public void onStop(SeekBarView seekBarView, int position, String value) {
                     mBattery.setchargeLevelAC((position * 25), getActivity());
+                    chargeLevelAC.setUnit(position * 25 + getString(R.string.ma));
                 }
 
                 @Override
                 public void onMove(SeekBarView seekBarView, int position, String value) {
+                    chargeLevelAC.setUnit(position * 25 + getString(R.string.ma));
                 }
             });
 
