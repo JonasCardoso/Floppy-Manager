@@ -1,5 +1,8 @@
 # Change-logs
 
+## 51-2. January 27, 2019
+Changes: DisplayLEDFragment: unified Button Backlight. BatteryFragment: charging switch. Build: added sign configs 
+
 ## 51-1. January 20, 2019
 Changes: SpectrumFragment: fixed QsTile. MiscFragment: added cpuset control interface. MainActivity: Initialize Boeffla Wakelock Blocker Files. Sound: Add High Performance Audio toggle. 
 

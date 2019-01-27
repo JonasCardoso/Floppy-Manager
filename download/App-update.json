@@ -1,14 +1,15 @@
 {
-  "latestVersion": "0.9.10.3-20012019",
-  "url": "https://github.com/JonasCardoso/Floppy-Manager/blob/master/download/com.jonas.floppymanager-v0.9.10.3-20012019.apk?raw=true",
+  "latestVersion": "0.9.10.3-27012019",
+  "url": "https://github.com/JonasCardoso/Floppy-Manager/blob/master/download/com.jonas.floppymanager-v0.9.10.3-27012019.apk?raw=true",
   "releaseNotes": [
     "Change-log:",
-    "- VM: add control over zRAM compression algorithams.",
-    "- Sound: Add High Performance Audio toggle.",
-    "- MainActivity: Initialize Boeffla Wakelock Blocker Files",
-    "- MiscFragment: added cpuset control interface.",
-    "- Misc: added an option to disable PrintK logging via printk_mode interface by Lord Boeffla.",
-    "- SpectrumFragment: fixed QsTile.",
+    "- DisplayLEDFragment: unified Button Backlight.",
+    "- BatteryFragment: charging switch.",
+    "- Build: added sign configs.",
+    "- THIS VERSION WAS SIGNED.",
+    "- LIKELY YOU WILL HAVE UNINSTALL OLD APPLICATION TO INSTALL THIS NEW UPDATE.",
+    "- Use Titanium Backup to restore your data.",
     "- Many other internal improvement." 
   ]
 }
+ 
