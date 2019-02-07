@@ -686,6 +686,8 @@
     <string name="wakelock">Wakelocks</string>
     <string name="wakelocks_other">Other Wakelocks</string>
     <string name="wakelock_summary">Wakelocks are there for a reason. This means, by blocking some of them you can introduce smaller or bigger issues, trigger strange side effects and in the worst case render the system completely unusable. Blocking wakelocks is solely your own responsibility.</string>
+    <string name="wakelock_blocker_enabled">Boeffla Generic Wakelock Blocker</string>
+    <string name="wakelock_blocker_enabled_summary">Block some kernel wakelocks when screen is disabled to improve battery. If you have problems WiFi connection turn it off.</string>
     <string name="boeffla_wakelock">Boeffla Generic Wakelock Blocker</string>
     <string name="wkl_order">Wakelocks order</string>
     <string name="wkl_order_summary">Select the listing order of the Wakelocks</string>

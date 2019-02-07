@@ -43,7 +43,7 @@ import java.util.List;
  */
 
 public class Wakelocks {
-
+    private static final String WAKELOCK_BLOCKER_ENABLED = "/sys/class/misc/wakelock_blocker/wakelock_blocker_enabled";
     private static final String BOEFFLAWL = "/sys/devices/virtual/misc/boeffla_wakelock_blocker";
     private static final String VERSION = BOEFFLAWL + "/version";
     private static final String DEBUG = BOEFFLAWL + "/debug";
@@ -327,8 +327,20 @@ public class Wakelocks {
         return sWakelocks;
     }
 
+    public void enableWakelockBlockerEnabled(boolean enable, Context context) {
+        run(Control.write(enable ? "1" : "0", WAKELOCK_BLOCKER_ENABLED), WAKELOCK_BLOCKER_ENABLED, context);
+    }
+
+    public boolean isWakelockBlockerEnabledEnabled() {
+        return Utils.readFile(WAKELOCK_BLOCKER_ENABLED).equals("1");
+    }
+
+    public static boolean hasWakelockBlockerEnabled() {
+        return Utils.existFile(WAKELOCK_BLOCKER_ENABLED);
+    }
+	
     public static boolean supported() {
-        return boefflawlsupported() || hasWlanctrlDivider() || hasWlanrxDivider() || hasMsmHsicDivider() || hasBCMDHDDivider();
+        return boefflawlsupported() || hasWlanctrlDivider() || hasWlanrxDivider() || hasMsmHsicDivider() || hasBCMDHDDivider() || hasWakelockBlockerEnabled();
     }
 
     private static void run(String command, String id, Context context) {

@@ -48,7 +48,9 @@ import java.util.List;
  */
 
 public class WakelockFragment extends RecyclerViewFragment {
-
+	
+    private Wakelocks mWakelocks;
+	
     private List<CardView> mWakeCard = new ArrayList<>();
 
     @Override
@@ -75,6 +77,21 @@ public class WakelockFragment extends RecyclerViewFragment {
         title.setText(getString(R.string.boeffla_wakelock) + "\n" + "Version: " + Wakelocks.getboefflawlVersion());
         mWakeCard.clear();
 
+        if (mWakelocks.hasWakelockBlockerEnabled()) {
+            SwitchView wakelockblockerenabled = new SwitchView();
+            wakelockblockerenabled.setTitle(getString(R.string.wakelock_blocker_enabled));
+            wakelockblockerenabled.setSummary(getString(R.string.wakelock_blocker_enabled_summary));
+            wakelockblockerenabled.setChecked(mWakelocks.isWakelockBlockerEnabledEnabled());
+            wakelockblockerenabled.addOnSwitchListener(new SwitchView.OnSwitchListener() {
+                @Override
+                public void onChanged(SwitchView switchView, boolean isChecked) {
+                    mWakelocks.enableWakelockBlockerEnabled(isChecked, getActivity());
+                }
+            });
+
+            items.add(wakelockblockerenabled);
+        }
+		
         SelectView borfflawlorder = new SelectView();
         borfflawlorder.setTitle(getString(R.string.wkl_order));
         borfflawlorder.setSummary(getString(R.string.wkl_order_summary));
@@ -88,7 +105,7 @@ public class WakelockFragment extends RecyclerViewFragment {
             }
         });
         bwl.add(borfflawlorder);
-
+		
         List<WakeLockInfo> wakelocksinfo = Wakelocks.getWakelockInfo();
 
         CardView cardViewB = new CardView(getActivity());
