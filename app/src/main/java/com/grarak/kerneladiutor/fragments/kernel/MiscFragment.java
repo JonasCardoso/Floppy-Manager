@@ -174,6 +174,22 @@ public class MiscFragment extends RecyclerViewFragment {
     }
 
     private void fsyncInit(List<RecyclerViewItem> items) {
+	
+        if (mMisc.hasBlockTuner()) {
+            SwitchView blocktuner = new SwitchView();
+            blocktuner.setTitle(getString(R.string.blocktuner));
+            blocktuner.setSummary(getString(R.string.blocktuner_summary));
+            blocktuner.setChecked(mMisc.isBlockTunerEnabled());
+            blocktuner.addOnSwitchListener(new SwitchView.OnSwitchListener() {
+                @Override
+                public void onChanged(SwitchView switchView, boolean isChecked) {
+                    mMisc.enableBlockTuner(isChecked, getActivity());
+                }
+            });
+
+            items.add(blocktuner);
+        }
+		
         if (mMisc.hasFsync()) {
             SwitchView fsync = new SwitchView();
             fsync.setTitle(getString(R.string.fsync));
@@ -189,7 +205,7 @@ public class MiscFragment extends RecyclerViewFragment {
             items.add(fsync);
         }
 
-        if (mMisc.hasDynamicFsync()) {
+        if (mMisc.hasDynamicFsync() && !mMisc.hasBlockTuner()) {
             SwitchView dynamicFsync = new SwitchView();
             dynamicFsync.setTitle(getString(R.string.dynamic_fsync));
             dynamicFsync.setSummary(getString(R.string.dynamic_fsync_summary));

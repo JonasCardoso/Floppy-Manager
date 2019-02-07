@@ -44,6 +44,7 @@ public class Misc {
         return sInstance;
     }
 
+    private static final String BLOCK_TUNER = "/sys/kernel/block_tuner/block_tuner_enabled";
     private static final String DYNAMIC_FSYNC = "/sys/kernel/dyn_fsync/Dyn_fsync_active";
     private static final String GENTLE_FAIR_SLEEPERS = "/sys/kernel/sched/gentle_fair_sleepers";
     private static final String ARCH_POWER = "/sys/kernel/sched/arch_power";
@@ -287,6 +288,18 @@ public class Misc {
         return Utils.existFile(GENTLE_FAIR_SLEEPERS);
     }
 
+    public void enableBlockTuner(boolean enable, Context context) {
+        run(Control.write(enable ? "1" : "0", BLOCK_TUNER), BLOCK_TUNER, context);
+    }
+
+    public boolean isBlockTunerEnabled() {
+        return Utils.readFile(BLOCK_TUNER).equals("1");
+    }
+
+    public boolean hasBlockTuner() {
+        return Utils.existFile(BLOCK_TUNER);
+    }
+	
     public void enableDynamicFsync(boolean enable, Context context) {
         run(Control.write(enable ? "1" : "0", DYNAMIC_FSYNC), DYNAMIC_FSYNC, context);
     }
