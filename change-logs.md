@@ -1,5 +1,8 @@
 # Change-logs
 
+## 51-3. February 17, 2019
+Changes: VMFragment: set max zram to 8GB. MiscFragment: added block tuner by xNombre. WakelockFragment: added support for Boeffla Wakelock Blocker by xNombre.
+
 ## 51-2. January 27, 2019
 Changes: DisplayLEDFragment: unified Button Backlight. BatteryFragment: charging switch. Build: added sign configs 
 
