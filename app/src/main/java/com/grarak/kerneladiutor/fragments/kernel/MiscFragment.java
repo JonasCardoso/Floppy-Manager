@@ -323,30 +323,36 @@ public class MiscFragment extends RecyclerViewFragment {
         CardView cpusetCard = new CardView(getActivity());
         cpusetCard.setTitle(getString(R.string.cpuset));
 		
+        int ncore = 0;
+		
+        if (mMisc.hasCheckOctacore()) {
+            ncore = 7;
+        }		
+        else 
+            ncore = 3;
+		
 	    if (mMisc.hasBackground()) {
             SeekBarView background = new SeekBarView();
             background.setTitle(getString(R.string.background));
             background.setSummary(getString(R.string.background_summary));
-	        background.setMax(3);
+	        background.setMax(ncore);
 	        background.setMin(0);		
-	        background.setOffset(1);
-			int tmp;
-			if("0-1".endsWith(mMisc.getBackground())){
-				tmp = 1;
-				background.setUnit("0-" + tmp);
-			}
-			else if("0-2".endsWith(mMisc.getBackground())){
-				tmp = 2;
-				background.setUnit("0-" + tmp);
-			}
-			else if("0-3".endsWith(mMisc.getBackground())){
-				tmp = 3;
-				background.setUnit("0-" + tmp);				
-			}
-			else{
-				tmp = 0;
-				background.setUnit("0");				
-			}
+            background.setOffset(1);	
+            int tmp = 0;
+            boolean check = false;	
+            for (int ntmp = 1; ntmp <= ncore; ntmp++){						
+                if(mMisc.getBackground().trim().equals("0-" + ntmp)){
+                    background.setUnit(String.valueOf("0-" + ntmp));
+                    tmp = ntmp;
+                    check = true;
+                }
+					
+                if (ntmp == ncore && check == false){
+                    background.setUnit("0");
+                    tmp = 0;
+                    check = true;						
+                }				
+            }			
 	        background.setProgress(tmp);
 	        background.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
 		        @Override
@@ -380,26 +386,24 @@ public class MiscFragment extends RecyclerViewFragment {
             SeekBarView cameradaemon = new SeekBarView();
             cameradaemon.setTitle(getString(R.string.camera_daemon));
             cameradaemon.setSummary(getString(R.string.camera_daemon_summary));
-	        cameradaemon.setMax(3);
+	        cameradaemon.setMax(ncore);
 	        cameradaemon.setMin(0);		
 	        cameradaemon.setOffset(1);
-			int tmp;
-			if("0-1".endsWith(mMisc.getCameraDaemon())){
-				tmp = 1;
-				cameradaemon.setUnit("0-" + tmp);
-			}
-			else if("0-2".endsWith(mMisc.getCameraDaemon())){
-				tmp = 2;
-				cameradaemon.setUnit("0-" + tmp);
-			}
-			else if("0-3".endsWith(mMisc.getCameraDaemon())){
-				tmp = 3;
-				cameradaemon.setUnit("0-" + tmp);				
-			}
-			else{
-				tmp = 0;
-				cameradaemon.setUnit("0");				
-			}
+            int tmp = 0;
+            boolean check = false;	
+            for (int ntmp = 1; ntmp <= ncore; ntmp++){						
+                if(mMisc.getCameraDaemon().trim().equals("0-" + ntmp)){
+                    cameradaemon.setUnit(String.valueOf("0-" + ntmp));
+                    tmp = ntmp;
+                    check = true;
+                }
+					
+                if (ntmp == ncore && check == false){
+                    cameradaemon.setUnit("0");
+                    tmp = 0;
+                    check = true;						
+                }				
+            }	
 	        cameradaemon.setProgress(tmp);
 	        cameradaemon.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
 		        @Override
@@ -433,26 +437,24 @@ public class MiscFragment extends RecyclerViewFragment {
             SeekBarView foreground = new SeekBarView();
             foreground.setTitle(getString(R.string.foreground));
             foreground.setSummary(getString(R.string.foreground_summary));
-	        foreground.setMax(3);
+	        foreground.setMax(ncore);
 	        foreground.setMin(0);		
 	        foreground.setOffset(1);
-			int tmp;
-			if("0-1".endsWith(mMisc.getForeground())){
-				tmp = 1;
-				foreground.setUnit("0-" + tmp);
-			}
-			else if("0-2".endsWith(mMisc.getForeground())){
-				tmp = 2;
-				foreground.setUnit("0-" + tmp);
-			}
-			else if("0-3".endsWith(mMisc.getForeground())){
-				tmp = 3;
-				foreground.setUnit("0-" + tmp);				
-			}
-			else{
-				tmp = 0;
-				foreground.setUnit("0-" + tmp);				
-			}
+            int tmp = 0;
+            boolean check = false;	
+            for (int ntmp = 1; ntmp <= ncore; ntmp++){						
+                if(mMisc.getForeground().trim().equals("0-" + ntmp)){
+                    foreground.setUnit(String.valueOf("0-" + ntmp));
+                    tmp = ntmp;
+                    check = true;
+                }
+					
+                if (ntmp == ncore && check == false){
+                    foreground.setUnit("0");
+                    tmp = 0;
+                    check = true;						
+                }				
+            }	
 	        foreground.setProgress(tmp);
 	        foreground.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
 		        @Override
@@ -486,26 +488,24 @@ public class MiscFragment extends RecyclerViewFragment {
             SeekBarView restricted = new SeekBarView();
             restricted.setTitle(getString(R.string.restricted));
             restricted.setSummary(getString(R.string.restricted_summary));
-	        restricted.setMax(3);
+	        restricted.setMax(ncore);
 	        restricted.setMin(0);		
 	        restricted.setOffset(1);
-			int tmp;
-			if("0-1".endsWith(mMisc.getRestricted())){
-				tmp = 1;
-				restricted.setUnit("0-" + tmp);
-			}
-			else if("0-2".endsWith(mMisc.getRestricted())){
-				tmp = 2;
-				restricted.setUnit("0-" + tmp);
-			}
-			else if("0-3".endsWith(mMisc.getRestricted())){
-				tmp = 3;
-				restricted.setUnit("0-" + tmp);				
-			}
-			else{
-				tmp = 0;	
-				restricted.setUnit("0-" + tmp);				
-			}
+            int tmp = 0;
+            boolean check = false;	
+            for (int ntmp = 1; ntmp <= ncore; ntmp++){						
+                if(mMisc.getRestricted().trim().equals("0-" + ntmp)){
+                    restricted.setUnit(String.valueOf("0-" + ntmp));
+                    tmp = ntmp;
+                    check = true;
+                }
+					
+                if (ntmp == ncore && check == false){
+                    restricted.setUnit("0");
+                    tmp = 0;
+                    check = true;						
+                }				
+            }	
 	        restricted.setProgress(tmp);
 	        restricted.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
 		        @Override
@@ -539,26 +539,24 @@ public class MiscFragment extends RecyclerViewFragment {
             SeekBarView systembackground = new SeekBarView();
             systembackground.setTitle(getString(R.string.system_background));
             systembackground.setSummary(getString(R.string.system_background_summary));
-	        systembackground.setMax(3);
+	        systembackground.setMax(ncore);
 	        systembackground.setMin(0);		
 	        systembackground.setOffset(1);
-			int tmp;
-			if("0-1".endsWith(mMisc.getSystemBackground())){
-				tmp = 1;
-				systembackground.setUnit("0-" + tmp);
-			}
-			else if("0-2".endsWith(mMisc.getSystemBackground())){
-				tmp = 2;
-				systembackground.setUnit("0-" + tmp);
-			}
-			else if("0-3".endsWith(mMisc.getSystemBackground())){
-				tmp = 3;
-				systembackground.setUnit("0-" + tmp);				
-			}
-			else{
-				tmp = 0;
-				systembackground.setUnit("0-" + tmp);				
-			}
+            int tmp = 0;
+            boolean check = false;	
+            for (int ntmp = 1; ntmp <= ncore; ntmp++){						
+                if(mMisc.getSystemBackground().trim().equals("0-" + ntmp)){
+                    systembackground.setUnit(String.valueOf("0-" + ntmp));
+                    tmp = ntmp;
+                    check = true;
+                }
+					
+                if (ntmp == ncore && check == false){
+                    systembackground.setUnit("0");
+                    tmp = 0;
+                    check = true;						
+                }				
+            }
 	        systembackground.setProgress(tmp);
 	        systembackground.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
 		        @Override
@@ -592,26 +590,24 @@ public class MiscFragment extends RecyclerViewFragment {
             SeekBarView topapp = new SeekBarView();
             topapp.setTitle(getString(R.string.top_app));
             topapp.setSummary(getString(R.string.top_app_summary));
-	        topapp.setMax(3);
+	        topapp.setMax(ncore);
 	        topapp.setMin(0);		
 	        topapp.setOffset(1);
-			int tmp;
-			if("0-1".endsWith(mMisc.getTopApp())){
-				tmp = 1;
-				topapp.setUnit("0-" + tmp);
-			}
-			else if("0-2".endsWith(mMisc.getTopApp())){
-				tmp = 2;
-				topapp.setUnit("0-" + tmp);
-			}
-			else if("0-3".endsWith(mMisc.getTopApp())){
-				tmp = 3;
-				topapp.setUnit("0-" + tmp);				
-			}
-			else{
-				tmp = 0;
-				topapp.setUnit("0-" + tmp);				
-			}
+            int tmp = 0;
+            boolean check = false;	
+            for (int ntmp = 1; ntmp <= ncore; ntmp++){						
+                if(mMisc.getTopApp().trim().equals("0-" + ntmp)){
+                    topapp.setUnit(String.valueOf("0-" + ntmp));
+                    tmp = ntmp;
+                    check = true;
+                }
+					
+                if (ntmp == ncore && check == false){
+                    topapp.setUnit("0");
+                    tmp = 0;
+                    check = true;						
+                }				
+            }	
 	        topapp.setProgress(tmp);
 	        topapp.setOnSeekBarListener(new SeekBarView.OnSeekBarListener() {
 		        @Override

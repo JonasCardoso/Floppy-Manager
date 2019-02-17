@@ -62,7 +62,8 @@ public class Misc {
     private static final String RESTRICTED = "/dev/cpuset/restricted/cpus";
     private static final String SYSTEM_BACKGROUND = "/dev/cpuset/system-background/cpus";
     private static final String TOP_APP = "/dev/cpuset/top-app/cpus";
-
+    private static final String CHECK_OCTACORE = "/sys/devices/system/cpu/cpu7/online";
+	
     private static final String PRINTK_MODE = "/sys/kernel/printk_mode/printk_mode";
 
     private static final String HOSTNAME_KEY = "net.hostname";
@@ -238,6 +239,10 @@ public class Misc {
 
     public static boolean hasTopApp() {
         return Utils.existFile(TOP_APP);
+    }
+
+    public static boolean hasCheckOctacore() {
+        return Utils.existFile(CHECK_OCTACORE);
     }
 
 	public void enableUCBalanced(boolean enable, Context context) {
