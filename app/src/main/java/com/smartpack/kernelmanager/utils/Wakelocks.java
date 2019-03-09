@@ -174,7 +174,7 @@ public class Wakelocks {
     }
 
     public static boolean boefflawlsupported() {
-        return Utils.existFile(BOEFFLAWL);
+        return Utils.existFile(BOEFFLAWL) || Utils.existFile(WAKELOCK_BLOCKER);
     }
 
     public static class Wakelock {
