@@ -228,7 +228,7 @@ public class NavigationActivity extends BaseActivity
         if (Entropy.supported()) {
             mFragments.add(new NavigationActivity.NavigationFragment(R.string.entropy, EntropyFragment.class, R.drawable.ic_numbers));
         }
-        if (Spectrum.supported_root() || Spectrum.supported_init()) {
+        if (Spectrum.supported_root() || Spectrum.supported_init() || Spectrum.supported_vendor()) {
             mFragments.add(new NavigationActivity.NavigationFragment(R.string.spectrum, SpectrumFragment.class, R.drawable.ic_spectrum_logo));
         }
         mFragments.add(new NavigationActivity.NavigationFragment(R.string.misc, MiscFragment.class, R.drawable.ic_clear));

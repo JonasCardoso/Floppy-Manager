@@ -36,8 +36,9 @@ import com.grarak.kerneladiutor.utils.root.RootUtils;
 
 public class Spectrum {
 
-    private static final String SPECTRUM_ROOT = "/init.spectrum.sh";
-    private static final String SPECTRUM_INIT = "/system/etc/init/init.spectrum.sh";
+    private static final String SPECTRUM_ROOT = "/init.spectrum.rc";
+    private static final String SPECTRUM_INIT = "/system/etc/init/init.spectrum.rc";
+    private static final String SPECTRUM_VENDOR = "/vendor/etc/init/hw/init.spectrum.rc";
 
     public static String getProfile(){
         return RootUtils.runCommand("getprop persist.spectrum.profile");
@@ -70,5 +71,9 @@ public class Spectrum {
 	
     public static boolean supported_init() {
         return Utils.existFile(SPECTRUM_INIT);
+    }
+	
+    public static boolean supported_vendor() {
+        return Utils.existFile(SPECTRUM_VENDOR);
     }
 }
