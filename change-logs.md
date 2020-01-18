@@ -1,5 +1,8 @@
 # Change-logs
 
+## 51-4. January 17, 2020
+Changes: Support SDK 29. Added support to spectrum in vendor.
+
 ## 51-3. February 17, 2019
 Changes: VMFragment: set max zram to 8GB. MiscFragment: added block tuner by xNombre. WakelockFragment: added support for Boeffla Wakelock Blocker by xNombre.
 

@@ -1,12 +1,9 @@
 {
-  "latestVersion": "0.9.10.3-17022019",
-  "url": "https://github.com/JonasCardoso/Floppy-Manager/blob/master/download/com.jonas.floppymanager-v0.9.10.3-17022019.apk?raw=true",
+  "latestVersion": "0.9.10.3-17012020",
+  "url": "https://github.com/JonasCardoso/Floppy-Manager/blob/master/download/com.jonas.floppymanager-v0.9.10.3-17012020-release.apk?raw=true",
   "releaseNotes": [
     "Change-log:",
-    "- VMFragment: set max zram to 8GB.",
-    "- MiscFragment: added block tuner by xNombre.",
-    "- WakelockFragment: added support for Boeffla Wakelock Blocker by xNombre.",
-    "- Many other internal improvement." 
+    "- Changes: Support SDK 29.",
+    "- Added support to spectrum in vendor."
   ]
 }
- 
